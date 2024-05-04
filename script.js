@@ -4,8 +4,32 @@ const categoryListsBtn = document.querySelector(".category-lists");
 const slider = document.querySelector(".slider");
 const leftSlide = document.querySelector(".left-slide");
 const rightSlide = document.querySelector(".right-slide");
+const dateElm = document.querySelector(".date");
 
-let category = "1";
+const date = new Date();
+
+dateElm.innerHTML = date.getFullYear();
+
+const navLists = document.querySelectorAll(".list a");
+navLists.forEach((navList) => {
+  navList.addEventListener("click", (e) => {
+    e.preventDefault();
+    navLists.forEach((nav) => {
+      nav.parentElement.classList.remove("active");
+    });
+    const id = e.currentTarget.getAttribute("href");
+    const element = document.querySelector(id);
+    navList.parentElement.classList.add("active");
+    // console.log(navList);
+    let position = element.offsetTop;
+    window.scrollTo({
+      left: 0,
+      top: position - 70,
+    });
+  });
+});
+
+let category;
 returnCategory(category);
 
 categoryDisplayBtn.addEventListener("click", () => {
@@ -23,7 +47,7 @@ categoryLists.forEach((categoryLis) => {
 });
 
 function returnCategory(category = "1") {
-  categoryList = foods.filter((element) => {
+  let categoryList = foods.filter((element) => {
     slider.innerHTML = "";
     return element.category === category;
   });
@@ -57,6 +81,16 @@ function createSlider(categoryList, spanLength) {
 
     slidingFunctionality(categoryList, slider, index);
   });
+
+  slider.addEventListener("click", () => {
+    const sliderSpan = slider.querySelectorAll(".slider span");
+    sliderSpan.forEach((span) => {
+      span.addEventListener("click", () => {
+        index = span.dataset.idx;
+        slidingFunctionality(categoryList, slider, index);
+      });
+    });
+  });
   slidingFunctionality(categoryList, slider, index);
 }
 
@@ -75,11 +109,11 @@ function slidingFunctionality(categoryList, slide, idx = 0) {
     if (end > len) {
       end = len;
     }
-    returnHtml(start, end);
+    returnHtml(categoryList, start, end);
   });
 }
 
-function returnHtml(start, end) {
+function returnHtml(categoryList, start, end) {
   let innerText = "";
   const foodsList = document.querySelector(".food-lists");
   for (let index = start; index < end; index++) {

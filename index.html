@@ -16,9 +16,9 @@
 
         <ul class="lists">
             <li class="list"><a href="#home">home</a></li>
-            <li class="list"><a href="#service">service</a></li>
-            <li class="list"><a href="#top cities">top cities</a></li>
-            <li class="list"><a href="#contract">contract</a></li>
+            <li class="list"><a href="#catagory">catagory</a></li>
+            <li class="list"><a href="#topfoods">top foods</a></li>
+            <li class="list"><a href="#download">download</a></li>
 
             <li><input type="search" style="display: none;"></li>
             <li class="cart"><i class="fas fa-shopping-cart"></i></li>
@@ -48,16 +48,21 @@
         <article class="catagories">
             <div class="option-display ">categories <span><i class="fas fa-chevron-down"></i></span></div>
             <ul class="category-lists">
-                <li class="category-list"><i class="fas fa-hamburger"></i> burger</li>
-                <li class="category-list"><i class="fas fa-pizza-slice"></i> pizza</li>
-                <li class="category-list"><i class="fas fa-hotdog"></i> sandwich</li>
-                <li class="category-list"><i class="fas fa-utensils"></i> ethiopian food</li>
-                <li class="category-list"><i class="fas fa-clipboard-list"></i> set menu</li>
+                <li class="category-list active" data-typeId="1"><i class="fas fa-hamburger"></i> burger</li>
+                <li class="category-list" data-typeId="2"><i class="fas fa-pizza-slice"></i> pizza</li>
+                <li class="category-list" data-typeId="3"><i class="fas fa-hotdog"></i> sandwich</li>
+                <li class="category-list" data-typeId="4"><i class="fas fa-utensils"></i> ethiopian food</li>
+                <li class="category-list" data-typeId="5"><i class="fas fa-clipboard-list"></i> set menu</li>
             </ul>
         </article>
         <article class="foods ">
             <div class="food-lists">
             </div>
+        </article>
+        <article class="move">
+            <span class="left-slide"><- </span>
+                    <div class="slider"></div>
+                    <span class="right-slide">-></span>
         </article>
     </section>
 
@@ -87,7 +92,7 @@
 
 
     <h3 class="title">our popular<span class="notice">category</span></h3>
-    <section class="section-center top-foods">
+    <section class="section-center top-foods" id="topfoods">
 
         <!-- single top food  -->
         <article class="top-food">
@@ -195,7 +200,7 @@
 
     <!--  download-->
 
-    <section class="section-center download">
+    <section class="section-center download" id="download">
         <div class="download-text">
             <h1>download our<span class="notice"> mobil app</span></h1>
             <p>we Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dolore nam obcaecati at, hic
